@@ -123,15 +123,15 @@ while (invalidAnswer) {
   }
 }
 */
-var response6;
-var favNumber = Math.floor((Math.random() * 10) + 1);
-console.log('favNumber = ' + favNumber); //checks that the random number generator is working as intended
-var answer6 = 'The number I was thinking of was ' + favNumber;
+//var response6;
+//var favNumber = Math.floor((Math.random() * 10) + 1);
+//console.log('favNumber = ' + favNumber); //checks that the random number generator is working as intended
+//var answer6 = 'The number I was thinking of was ' + favNumber;
 var incorrect = true;
 var counter = 4;
-var prompt6;
+//var prompt6;
 
-while (incorrect && (counter >= 1)) {
+/*while (incorrect && (counter >= 1)) {
   console.log('counter before question' + counter);
   prompt6 = 'I\'m thinking of a whole number between 1 and 10. Try to guess the number! \n You have ' + counter + ' tries left.';
   console.log('counter = ' + counter); //checks that the counter is working as intended
@@ -153,28 +153,31 @@ while (incorrect && (counter >= 1)) {
   else {
     alert(defaultIncorrect + ' That was your last try, sorry! \n The number I was thinking of was ' + favNumber + '.');
   }
-}
+}*/
+var response7;
+var prompt7;
+var answer7 = 'Chocolate, pizza, mexican, cheese, and fruit are my favorite foods!';
+incorrect = true;
+counter = 6;
 
-/*for (var counter = 4; counter > 1; counter--) {
-  prompt6 = 'I\'m thinking of a whole number between 1 and 10. Try to guess the number! \n You have ' + counter + ' tries left.';
+while (incorrect && (counter >= 1)) {
+  prompt7 = 'Name one of my favorite foods. \n You have ' + counter + ' tries left.';
   console.log('counter = ' + counter); //checks that the counter is working as intended
-  response6 = prompt(prompt6);
-  console.log('user response = ' + response6); //checks that the response is captured appropriately
-  if (response6 === favNumber) {
-    alert(defaultCorrect + answer6 + favNumber + '.');
+  response7 = (prompt(prompt7)).toLowerCase();
+  console.log('user response = ' + response7); //checks that the response is captured appropriately
+  counter--;
+  if (response7 === 'chocolate' || response7 === 'pizza' || response7 === 'mexican' || response7 === 'cheese' || response7 === 'fruit') {
+    alert(defaultCorrect + answer7);
+    incorrect = false;
   }
-  else if (counter === 1) {
-    alert(defaultIncorrect + ' That was your last try, sorry! \n The number I was thinking of was ' + favNumber + '.');
+  else if (counter !== 0) {
+    alert(defaultIncorrect + 'Try again!');
   }
   else {
-    if (response6 > favNumber) {
-      alert(defaultIncorrect + ' Try again!\n' + 'HINT: try guessing a smaller number.');
-    }
-    else {
-      alert(defaultIncorrect + ' Try again!\n' + 'HINT: try guessing a larger number.');
-    }
+    alert(defaultIncorrect + 'Sorry, you ran out of attempts. ' + answer7);
   }
-} */
+
+}
 
 //document.write('Here is a summary of the game, the questions asked, and your answers: </br></br>');
 //document.write(prompt1 + ' You answered \'' + response1 + '\'.');
