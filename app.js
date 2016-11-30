@@ -2,16 +2,17 @@
 
 /*I use this to comment out all the Js while I test the rest of the site so I don't have to go through the questions while I do so*/
 
-var prompt1 = 'Was Yana born in the United States?';
-var response1;
-var answer1 = 'Yana was born in Bulgaria, not in the United States.';
-var defaultWrongResponse = 'I did not recognize your response. Please try again.';
+//var prompt1 = 'Was Yana born in the United States?';
+//var response1;
+//var answer1 = 'Yana was born in Bulgaria, not in the United States.';
+//var defaultWrongResponse = 'I did not recognize your response. Please try again.';
 var defaultCorrect = 'That is correct.\n';
 var defaultIncorrect = 'That is incorrect.\n';
-var defaultGibberish = 'Their answer was gibberish.';
-var invalidAnswer = true;
-var QnAinfo = [];
+//var defaultGibberish = 'Their answer was gibberish.';
+//var invalidAnswer = true;
+//var QnAinfo = [];
 
+/*
 while (invalidAnswer){
   response1 = prompt(prompt1).toLowerCase();
   if (response1 === 'n' || response1 === 'no') {
@@ -121,15 +122,68 @@ while (invalidAnswer) {
     console.log(prompt5 + ' ' + defaultGibberish);
   }
 }
+*/
+var response6;
+var favNumber = Math.floor((Math.random() * 10) + 1);
+console.log('favNumber = ' + favNumber); //checks that the random number generator is working as intended
+var answer6 = 'The number I was thinking of was ' + favNumber;
+var incorrect = true;
+var counter = 4;
+var prompt6;
 
-document.write('Here is a summary of the game, the questions asked, and your answers: </br></br>');
-document.write(prompt1 + ' You answered \'' + response1 + '\'.');
-document.write('</br>' + answer1 + '</br></br>');
-document.write(prompt2 + ' You answered \'' + response2 + '\'.');
+while (incorrect && (counter >= 1)) {
+  console.log('counter before question' + counter);
+  prompt6 = 'I\'m thinking of a whole number between 1 and 10. Try to guess the number! \n You have ' + counter + ' tries left.';
+  console.log('counter = ' + counter); //checks that the counter is working as intended
+  response6 = parseInt(prompt(prompt6));
+  console.log('user response = ' + response6); //checks that the response is captured appropriately
+  counter--;
+  if (response6 === favNumber) {
+    alert(defaultCorrect + answer6 + '.');
+    incorrect = false;
+  }
+  else if (counter !== 0) {
+    if (response6 > favNumber) {
+      alert(defaultIncorrect + ' Try again!\n' + 'HINT: try guessing a smaller number.');
+    }
+    else {
+      alert(defaultIncorrect + ' Try again!\n' + 'HINT: try guessing a larger number.');
+    }
+  }
+  else {
+    alert(defaultIncorrect + ' That was your last try, sorry! \n The number I was thinking of was ' + favNumber + '.');
+  }
+}
+
+/*for (var counter = 4; counter > 1; counter--) {
+  prompt6 = 'I\'m thinking of a whole number between 1 and 10. Try to guess the number! \n You have ' + counter + ' tries left.';
+  console.log('counter = ' + counter); //checks that the counter is working as intended
+  response6 = prompt(prompt6);
+  console.log('user response = ' + response6); //checks that the response is captured appropriately
+  if (response6 === favNumber) {
+    alert(defaultCorrect + answer6 + favNumber + '.');
+  }
+  else if (counter === 1) {
+    alert(defaultIncorrect + ' That was your last try, sorry! \n The number I was thinking of was ' + favNumber + '.');
+  }
+  else {
+    if (response6 > favNumber) {
+      alert(defaultIncorrect + ' Try again!\n' + 'HINT: try guessing a smaller number.');
+    }
+    else {
+      alert(defaultIncorrect + ' Try again!\n' + 'HINT: try guessing a larger number.');
+    }
+  }
+} */
+
+//document.write('Here is a summary of the game, the questions asked, and your answers: </br></br>');
+//document.write(prompt1 + ' You answered \'' + response1 + '\'.');
+//document.write('</br>' + answer1 + '</br></br>');
+/*document.write(prompt2 + ' You answered \'' + response2 + '\'.');
 document.write('</br>' + answer2 + '</br></br>');
 document.write(prompt3 + ' You answered \'' + response3 + '\'.');
 document.write('</br>' + answer3 + '</br></br>');
 document.write(prompt4 + ' You answered \'' + response4 + '\'.');
 document.write('</br>' + answer4 + '</br></br>');
 document.write(prompt5 + ' You answered \'' + response5 + '\'.');
-document.write('</br>' + answer5 + '</br></br>');
+document.write('</br>' + answer5 + '</br></br>');*/
