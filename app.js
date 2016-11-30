@@ -1,6 +1,6 @@
 'use strict';
 
-/*commenting this out while I test the rest of the site so I don't have to go through the questions while I do so
+/*I use this to comment out all the Js while I test the rest of the site so I don't have to go through the questions while I do so*/
 
 var prompt1 = 'Was Yana born in the United States?';
 var response1 = prompt(prompt1).toLowerCase();
@@ -102,5 +102,3 @@ document.write(prompt4 + ' You answered \'' + response4 + '\'.');
 document.write('</br>' + answer4 + '</br></br>');
 document.write(prompt5 + ' You answered \'' + response5 + '\'.');
 document.write('</br>' + answer5 + '</br></br>');
-
-*/
