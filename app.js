@@ -3,34 +3,35 @@
 /*I use this to comment out all the Js while I test the rest of the site so I don't have to go through the questions while I do so*/
 var userName = prompt('Welcome! What is your name? ');
 alert(userName + ', you have stumbled upon a game wherein you will be answering some questions about me. Here are some guidelines:\n\n Punctuation doesn\'t matter, but spelling does! Please stick to yes/y or no/n for yes or no questions; otherwise, I will have to chide you! At the end of the game, I will tell you how well you did. Good luck!');
-//var prompt1 = 'Was Yana born in the United States?';
-//var response1;
-//var answer1 = 'Yana was born in Bulgaria, not in the United States.';/
-//var defaultWrongResponse = 'I did not recognize your response. Please try again.';
-var defaultCorrect = 'That is correct.\n';
-var defaultIncorrect = 'That is incorrect.\n';
-//var defaultGibberish = 'Their answer was gibberish.';
-//var invalidAnswer = true;
-//var QnAinfo = [];
+var defaultWrongResponse = 'I did not recognize your response. Please try again.';
+var defaultCorrect = 'That is correct. The answer is ';
+var defaultIncorrect = 'That is incorrect. The answer is ';
 
-var Qarray = ['Was Yana born in the United States?', 'Does Yana have any cats?', 'Is Yana\'s favorite color black?', 'Is Yana 42 years old?', 'Did Yana want to be President of the US when she was younger?', 'I\'m thinking of a whole number between 1 and 10. Try to guess the number!', 'Name one of my favorite foods.'];
-for (var count = -1; count < 7; count++) {
+
+//QnAnRarray is a 5 x 7 array to store each of the five questions, two correct answer options,
+//two incorrect answer options, the feedback the user gets after answering a question, and the
+//user's respose (the valid one only in case multiple attempts are needed), in that order
+
+var QnAnRarray = [['Was Yana born in the United States?', 'n', 'no', 'y', 'yes', ' Yana was born in Bulgaria.', ''],
+['Does Yana have any cats?', 'n', 'no', 'y', 'yes', ' Yana used to have three cats, but they\'re all dead.',''],
+['Is Yana\'s favorite color black?', 'y', 'yes', 'n', 'no', ' Yana\'s favorite color is black, and she doesn\'t care that black is not technically a single color.',''],
+['Is Yana 42 years old?', 'n', 'no', 'y', 'yes', ' Yana is 37 years old.',''],
+['Did Yana want to be President of the US when she was younger?', 'y', 'yes', 'n', 'no', ' Yana did want to be President, but fortunately she became wiser as she got older.']];
+for (var count = 0; count < 5; count++) {
   var invalidAnswer = true;
+  var userResponse;
   while (invalidAnswer){
-    response1 = prompt(Qarray[count]).toLowerCase();
-    if (response1 === 'n' || response1 === 'no') {
-      alert(defaultCorrect + answer1);
-      console.log(prompt1 + ' They answered no. How did this person know I am an alien?');
+    userResponse = prompt(QnAnRarray[count][0]).toLowerCase();
+    if (userResponse === QnAnRarray[count][1] || userResponse === QnAnRarray[count][2]) {
+      alert(defaultCorrect + QnAnRarray[count][2] + '. '+ QnAnRarray[count][5]);
       invalidAnswer = false;
     }
-    else if (response1 === 'y' || response1 === 'yes') {
-      alert(defaultIncorrect + answer1);
-      console.log(prompt1 + ' Ha! They think I was born in the US. I tricked them as I expected.');
+    else if (userResponse === QnAnRarray[count][3] || userResponse === QnAnRarray[count][4]) {
+      alert(defaultIncorrect + QnAnRarray[count][2] + '. ' + QnAnRarray[count][5]);
       invalidAnswer = false;
     }
     else {
       alert(defaultWrongResponse);
-      console.log(prompt1 + ' ' + defaultGibberish);
     }
   }
 }
@@ -151,8 +152,8 @@ while (invalidAnswer) {
 //var favNumber = Math.floor((Math.random() * 10) + 1);
 //console.log('favNumber = ' + favNumber); //checks that the random number generator is working as intended
 //var answer6 = 'The number I was thinking of was ' + favNumber;
-var incorrect = true;
-var counter = 4;
+//var incorrect = true;
+//var counter = 4;
 //var prompt6;
 
 /*while (incorrect && (counter >= 1)) {
@@ -178,7 +179,7 @@ var counter = 4;
     alert(defaultIncorrect + ' That was your last try, sorry! \n The number I was thinking of was ' + favNumber + '.');
   }
 }*/
-var response7;
+/*var response7;
 var prompt7;
 var answer7 = 'Chocolate, pizza, mexican, cheese, and fruit are my favorite foods!';
 incorrect = true;
@@ -200,8 +201,7 @@ while (incorrect && (counter >= 1)) {
   else {
     alert(defaultIncorrect + 'Sorry, you ran out of attempts. ' + answer7);
   }
-
-}
+} */
 
 //document.write('Here is a summary of the game, the questions asked, and your answers: </br></br>');
 //document.write(prompt1 + ' You answered \'' + response1 + '\'.');
