@@ -79,6 +79,7 @@ var answer7 = 'Chocolate, pizza, mexican, cheese, and fruit are my favorite food
 incorrect = true;
 counter = 6;
 var question7responses = new Array;
+var answers7 = ['chocolate', 'pizza' , 'mexican', 'cheese', 'fruit'];
 
 while (incorrect && (counter >= 1)) {
   prompt7 = 'Name one of my favorite foods. \n You have ' + counter + ' tries left.';
@@ -86,12 +87,14 @@ while (incorrect && (counter >= 1)) {
   response7 = (prompt(prompt7)).toLowerCase();
   console.log('user response = ' + response7); //checks that the response is captured appropriately
   counter--;
-  if (response7 === 'chocolate' || response7 === 'pizza' || response7 === 'mexican' || response7 === 'cheese' || response7 === 'fruit') {
-    alert(defaultCorrect + answer7);
-    incorrect = false;
-    totalCorrect++;
+  for (var count3 = answers7.length - 1; count3 >= 0; count3--) {
+    if (response7 === answers7[count3]) {
+      alert(defaultCorrect + answer7);
+      incorrect = false;
+      totalCorrect++;
+    }
   }
-  else if (counter !== 0) {
+  if (incorrect && counter !== 0) {
     alert(defaultIncorrect + 'Try again!');
   }
   else {
@@ -99,7 +102,6 @@ while (incorrect && (counter >= 1)) {
   }
   question7responses[counter] = response7; //used to store multiple user answers to the same question
 }
-
 
 document.write('Thanks for playing, ' + userName + '! Here is a summary of the game, the questions asked, and your answers: </br></br>');
 
