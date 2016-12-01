@@ -1,16 +1,40 @@
 'use strict';
 
 /*I use this to comment out all the Js while I test the rest of the site so I don't have to go through the questions while I do so*/
-
+var userName = prompt('Welcome! What is your name? ');
+alert(userName + ', you have stumbled upon a game wherein you will be answering some questions about me. Here are some guidelines:\n\n Punctuation doesn\'t matter, but spelling does! Please stick to yes/y or no/n for yes or no questions; otherwise, I will have to chide you! At the end of the game, I will tell you how well you did. Good luck!');
 //var prompt1 = 'Was Yana born in the United States?';
 //var response1;
-//var answer1 = 'Yana was born in Bulgaria, not in the United States.';
+//var answer1 = 'Yana was born in Bulgaria, not in the United States.';/
 //var defaultWrongResponse = 'I did not recognize your response. Please try again.';
 var defaultCorrect = 'That is correct.\n';
 var defaultIncorrect = 'That is incorrect.\n';
 //var defaultGibberish = 'Their answer was gibberish.';
 //var invalidAnswer = true;
 //var QnAinfo = [];
+
+var Qarray = ['Was Yana born in the United States?', 'Does Yana have any cats?', 'Is Yana\'s favorite color black?', 'Is Yana 42 years old?', 'Did Yana want to be President of the US when she was younger?', 'I\'m thinking of a whole number between 1 and 10. Try to guess the number!', 'Name one of my favorite foods.'];
+for (var count = -1; count < 7; count++) {
+  var invalidAnswer = true;
+  while (invalidAnswer){
+    response1 = prompt(Qarray[count]).toLowerCase();
+    if (response1 === 'n' || response1 === 'no') {
+      alert(defaultCorrect + answer1);
+      console.log(prompt1 + ' They answered no. How did this person know I am an alien?');
+      invalidAnswer = false;
+    }
+    else if (response1 === 'y' || response1 === 'yes') {
+      alert(defaultIncorrect + answer1);
+      console.log(prompt1 + ' Ha! They think I was born in the US. I tricked them as I expected.');
+      invalidAnswer = false;
+    }
+    else {
+      alert(defaultWrongResponse);
+      console.log(prompt1 + ' ' + defaultGibberish);
+    }
+  }
+}
+
 
 /*
 while (invalidAnswer){
