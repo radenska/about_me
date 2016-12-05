@@ -47,3 +47,13 @@ li {
   padding: 2px;
   border-right: 2px solid black;
 }
+
+#JScontent {
+  color: darkgreen;
+  background-color: #EEFFFF;
+  font-size: 18;
+  width: 80%;
+  margin: 20px;
+  padding: 20px
+  border-radius: 7px;
+}

@@ -10,11 +10,13 @@ var totalCorrect = 0;
 var prompt6; //question 6 info
 var response6;
 var question6responses = [];
+var question6 = ['I\'m thinking of a whole number between 1 and 10. Try to guess the number! '];
+var question7correct = 'chocolate, pizza, mexican, cheese, fruit';
 var favNumber;
 var prompt7; //question 7 info
 var response7;
 var question7responses = [];
-
+var question7 = ['Name one of my favorite foods. '];
 
 //QnAnRarray is a 5 x 7 array to store each of the five questions, two correct answer options,
 //two incorrect answer options, the feedback the user gets after answering a question, and the
@@ -58,19 +60,18 @@ function questionSix() {
   var incorrect = true;
   var counter = 4;
 
-
-
   while (incorrect && (counter >= 1)) {
     console.log('counter before question' + counter);
     prompt6 = 'I\'m thinking of a whole number between 1 and 10. Try to guess the number! \n You have ' + counter + ' tries left.';
     console.log('counter = ' + counter); //checks that the counter is working as intended
     response6 = parseInt(prompt(prompt6));
+    question6responses.push(response6); //used to store multiple user answers to the same question
     console.log('user response = ' + response6); //checks that the response is captured appropriately
     counter--;
     if (response6 === favNumber) {
       alert(defaultCorrect + answer6 + '.');
       incorrect = false;
-      totalCorrect++;
+      totalCorrect += 1;
     }
     else if (counter !== 0) {
       if (response6 > favNumber) {
@@ -83,11 +84,10 @@ function questionSix() {
     else {
       alert(defaultIncorrect + ' That was your last try, sorry! \n The number I was thinking of was ' + favNumber + '.');
     }
-    question6responses[counter] = response6; //used to store multiple user answers to the same question
   }
 }
-questionSix();
 
+questionSix();
 
 function questionSeven() {
   var answer7 = 'Chocolate, pizza, mexican, cheese, and fruit are my favorite foods!';
@@ -107,7 +107,7 @@ function questionSeven() {
       if (response7 === answers7[count3]) {
         alert(defaultCorrect + answer7);
         incorrect = false;
-        totalCorrect++;
+        totalCorrect += 1;
       }
     }
     if (incorrect && counter !== 0) {
@@ -121,23 +121,62 @@ function questionSeven() {
 
 questionSeven();
 
-function writeSummary() {
-  document.write('Thanks for playing, ' + userName + '! Here is a summary of the game, the questions asked, and your answers: </br></br>');
-
-  for (var count2 = 0; count2 < 5; count2++) { //prints info for questions 1-5
-    document.write('<br>Question: ' + QnAnRarray[count2][0]);
-    document.write('<br>Your answer: ' + QnAnRarray[count2][6]);
-    document.write('<br>Correct answer: ' + QnAnRarray[count2][2] + '<br>');
+function removeEmptyAnswers (Responses) {
+  for (var count = 0; count < Responses.length; count++) {
+    if (Responses[count] === '') {
+      Responses[count].pop;
+    }
   }
-  document.write('<br>Question: ' + prompt6); //question 6 info
-  document.write('<br>Your answers: ' + question6responses);
-  document.write('<br>Correct answer: ' + favNumber + '<br>');
-
-  document.write('<br>Question: ' + prompt7); //question 7 info
-  document.write('<br>Your answers: ' + question7responses);
-  document.write('<br>Correct answers: ' + 'chocolate, pizza, mexican, cheese, fruit' + '<br>');
-
-  document.write('<br>Your game score: ' + totalCorrect + ' out of 7 correct!');
 }
 
-writeSummary();
+removeEmptyAnswers(question6responses);
+removeEmptyAnswers(question7responses);
+
+function intro() {
+  var summary = document.getElementById('JScontent');
+  var newItem = document.createElement('p');
+  var newEl = document.createTextNode('Thanks for playing, ' + userName + '! Here is a summary of the game, the questions asked, and your answers: ');
+  newItem.appendChild(newEl);
+  summary.appendChild(newItem);
+}
+
+intro();
+
+function addEachQuestion(qNum) {
+  var summary = document.getElementById('JScontent');
+  var newItem = document.createElement('p');
+  var newEl = document.createTextNode('Question: ' + QnAnRarray[qNum][0] + ' Your answer: ' + QnAnRarray[qNum][6] + ' Correct answer: ' + QnAnRarray[qNum][2]);
+  newItem.appendChild(newEl);
+  summary.appendChild(newItem);
+}
+
+function addSummary() {
+  for (var i2 = 0; i2 < 5; i2++) {
+    var qNum = i2;
+    addEachQuestion(qNum);
+  }
+}
+
+function addLastTwo(question, responses, answer) {
+  var summary = document.getElementById('JScontent');
+  var newItem = document.createElement('p');
+  var newEl = document.createTextNode('Question: ' + question + ' Your answer(s): ' + responses + ' Correct answer: ' + answer);
+  newItem.appendChild(newEl);
+  summary.appendChild(newItem);
+}
+
+addSummary();
+addLastTwo(question6, question6responses, favNumber);
+addLastTwo(question7, question7responses, question7correct);
+
+
+
+function score() {
+  var summary = document.getElementById('JScontent');
+  var newItem = document.createElement('p');
+  var newEl = document.createTextNode('Your game score: ' + totalCorrect + ' out of 7 correct!');
+  newItem.appendChild(newEl);
+  summary.appendChild(newItem);
+}
+
+score();
