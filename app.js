@@ -169,8 +169,6 @@ addSummary();
 addLastTwo(question6, question6responses, favNumber);
 addLastTwo(question7, question7responses, question7correct);
 
-
-
 function score() {
   var summary = document.getElementById('JScontent');
   var newItem = document.createElement('p');
